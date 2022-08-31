@@ -13,14 +13,24 @@ declare module "react" {
     }
 }
 
+interface Coordinates {
+    lat: number,
+    lng: number
+}
+
+interface Bounds {
+    sw : Coordinates,
+    ne : Coordinates
+}
+
 const App = (): JSX.Element => {
 
     const [places, setPlaces] = useState<any[]>([]);
     const [filteredPlaces, setfilteredPlaces] = useState<any[]>([]);
-    const [childClicked, setChildClicked] = useState(null);  // Used across List and Map Components
+    const [childClicked, setChildClicked] = useState<number | null>(null);  // Used across List and Map Components
 
-    const [coordinates, setCoordinates] = useState({lat: 0, lng: 0});
-    const [bounds, setBounds] = useState({sw:{lat : 0, lng: 0}, ne:{lat : 0, lng: 0}});
+    const [coordinates, setCoordinates] = useState<Coordinates>({lat: 0, lng: 0});
+    const [bounds, setBounds] = useState<Bounds>({sw:{lat : 0, lng: 0}, ne:{lat : 0, lng: 0}});
 
     const [isLoading, setIsLoading] = useState(false)
 
